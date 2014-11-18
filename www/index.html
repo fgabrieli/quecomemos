@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport"
+  content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+<title>Que morfamo'?</title>
+
+<!-- Css Stylesheets -->
+
+<link href="css/common.css" type="text/css" rel="stylesheet" />
+
+<!-- Modules -->
+<link rel="stylesheet" type="text/css" href="js/modules/recipe/view/css/recipe.css" />
+
+<!-- Libs -->
+<link rel="stylesheet" type="text/css" href="js/libs/bootstrap/3.3.1/css/bootstrap.min.css" />
+
+</head>
+
+<body data-ng-app="queApp" class="clearfix">
+  <div id="container">
+
+    <p>Eh! Que morfamo viejo?</p>
+
+    <div id="recipe" data-ng-controller="que.Recipe.ngController">
+
+      <div class="ingredient" data-ng-repeat="ing in ingredients track by $index">
+        <input type="text" class="form-control ingredient-name" data-ng-model="ing.name"
+          data-ng-change="suggestIngredients(ing)" />
+      </div>
+
+      <ul class="list-group suggest-box" data-ng-show="hasSuggestedIng">
+        <li data-ng-repeat="suggestedIng in suggestedIngredients" class="list-group-item">{{suggestedIng.name}}</li>
+      </ul>
+
+      <button class="btn btn-default" data-ng-click="newIngredient()">Agregar m&aacute;s ingredientes</button>
+
+    </div>
+
+    <!-- External Libs -->
+
+    <script type="text/javascript" src="js/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/libs/angular/1.2.26/angular.min.js"></script>
+    <script type="text/javascript" src="js/libs/json2/1.0/json2.min.js"></script>
+    <script type="text/javascript" src="js/libs/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <!-- App initialization -->
+    <script type="text/javascript">
+          // Initialize angular app
+          var queApp = angular.module('queApp', []);
+
+          var que = {};
+        </script>
+
+    <!-- Libraries -->
+    <script type="text/javascript" src="js/libs/propietary/event/1.0/Event.js"></script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <script type="text/javascript" src="js/index.js"></script>
+
+    <!-- Modules -->
+    <script type="text/javascript" src="js/modules/recipe/Recipe.js"></script>
+
+    <!-- Social sharing plugin -->
+    <script type="text/javascript" src="js/libs/socialsharing/1.0/SocialSharing.js"></script
+</body>
+
+</html>
