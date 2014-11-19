@@ -20,6 +20,10 @@
 <!-- Libs -->
 <link rel="stylesheet" type="text/css" href="js/libs/bootstrap/3.3.1/css/bootstrap.min.css" />
 
+<link rel="stylesheet" type="text/css" href="js/libs/jquery-ui/1.11.2/css/jquery-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="js/libs/jquery-ui/1.11.2/css/jquery-ui.structure.min.css" />
+<link rel="stylesheet" type="text/css" href="js/libs/jquery-ui/1.11.2/css/jquery-ui.theme.min.css" />
+
 </head>
 
 <body data-ng-app="queApp" class="clearfix">
@@ -30,13 +34,13 @@
     <div id="recipe" data-ng-controller="que.Recipe.ngController">
 
       <div class="ingredient" data-ng-repeat="ing in ingredients track by $index">
-        <input type="text" class="form-control ingredient-name" data-ng-model="ing.name"
+        <input id="ingredient-{{ing.id}}" type="text" class="form-control ingredient-input" data-ng-model="ing.name"
           data-ng-change="suggestIngredients(ing)" />
       </div>
 
-      <ul class="list-group suggest-box" data-ng-show="hasSuggestedIng">
-        <li data-ng-repeat="suggestedIng in suggestedIngredients" class="list-group-item">{{suggestedIng.name}}</li>
-      </ul>
+      <!--       <ul class="list-group suggest-box" data-ng-show="hasSuggestedIng"> -->
+      <!--         <li data-ng-repeat="suggestedIng in suggestedIngredients" class="list-group-item">{{suggestedIng.name}}</li> -->
+      <!--       </ul> -->
 
       <button class="btn btn-default" data-ng-click="newIngredient()">Agregar m&aacute;s ingredientes</button>
 
@@ -48,6 +52,7 @@
     <script type="text/javascript" src="js/libs/angular/1.2.26/angular.min.js"></script>
     <script type="text/javascript" src="js/libs/json2/1.0/json2.min.js"></script>
     <script type="text/javascript" src="js/libs/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/libs/jquery-ui/1.11.2/jquery-ui.min.js"></script>
 
     <!-- App initialization -->
     <script type="text/javascript">
@@ -63,7 +68,7 @@
     <script type="text/javascript" src="cordova.js"></script>
 
     <script type="text/javascript" src="js/index.js"></script>
-
+    
     <!-- Modules -->
     <script type="text/javascript" src="js/modules/recipe/Recipe.js"></script>
 
