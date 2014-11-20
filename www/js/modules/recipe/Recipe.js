@@ -5,18 +5,51 @@ que.Recipe = {
     var DEFAULT_INGREDIENT = {
       name : ''
     };
-    
+
     var INPUT_CLASS = 'ingredient-input';
+    
+    var INGREDIENT_SERVICE = 'http://' 
+    
+    var cache = [{
+      name : 'milanesas'
+    }];
+
+    function suggestIngredients(term, suggest) {
+      var ingredients = [];
+      
+      // Check the local cache first
+
+      var foundInCache = false;
+      for (var i = 0; i < cache.length; i++) {
+        var ing = cache[i];
+        if (ing.name.indexOf(term)) {
+          ingredients.push(ing.name);
+          foundInCache = true;
+        }
+      }
+      
+      if (!foundInCache) {
+        
+        // Send request to server
+        
+        $.get(INGREDIENT_SERVICE, data: {
+          ingredient : term
+        });
+      
+      }
+      
+      suggest(ingredients);
+    }
 
     function setupIngredients() {
       $scope.ingredients = [];
       newIngredient();
-      
+
       setTimeout(function() {
         $scope.$apply();
-        
+
         $('.' + INPUT_CLASS).autocomplete({
-          source : [ 'test', 'test1', 'test2' ]
+          source : suggestIngredients
         });
       }, 0);
     }
@@ -26,7 +59,7 @@ que.Recipe = {
     });
 
     // Last ingredient input id
-    
+
     var lastInputId = 0;
 
     function getNewInputId() {
@@ -41,9 +74,9 @@ que.Recipe = {
 
       setTimeout(function() {
         $scope.$apply();
-        
+
         $('#ingredient-' + newId).autocomplete({
-          source : [ 'test', 'test1', 'test2' ]
+          source : suggestIngredients
         });
       }, 0);
     }

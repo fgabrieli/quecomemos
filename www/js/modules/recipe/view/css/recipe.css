@@ -1,5 +1,5 @@
 #recipe .ingredient-input {
-  width: 200px;
+  width: 350px;
   margin-right: 10px;
   clear: both;
   margin-bottom: 10px;
@@ -8,4 +8,10 @@
 #recipe .suggest-box {
   position: absolute;
   width: 200px;
+}
+
+#recipe .search-recipes {
+  width: 200px;
+  height: 200px;
+  float: left;
 }
